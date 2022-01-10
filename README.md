@@ -2,7 +2,7 @@
 
 A minimal implementation of diffusion models with the goal to democratize the use of synthetic data from these models.
 
-Check out the [experimental results](#how-realistic-is-synthetic-data-from-diffusion-models) section for quantitative numbers on quality of synthetic data and [FAQs](#faqs) for a broader discussion. We experiments with nine commonly used datasets, and released all [assets](https://drive.google.com/drive/folders/1CfgFQSsIIfxcpVjIbEWLi2csGTeAo4O2?usp=sharing), including models and synthetic data for each of them. 
+Check out the [experimental results](#how-useful-is-synthetic-data-from-diffusion-models-) section for quantitative numbers on quality of synthetic data and [FAQs](#faqs) for a broader discussion. We experiments with nine commonly used datasets, and released all [assets](https://drive.google.com/drive/folders/1CfgFQSsIIfxcpVjIbEWLi2csGTeAo4O2?usp=sharing), including models and synthetic data for each of them. 
 
 **Requirements:** `pip install scipy opencv-python`. We assume torch and torchvision are already installed.
 
