@@ -754,10 +754,8 @@ class UNetModel(nn.Module):
             self.num_classes is not None
         ), "must specify y if and only if the model is class-conditional"
 
-        # print("entering, ", x.shape, y.shape)
         hs = []
         emb = self.time_embed(timestep_embedding(timesteps, self.model_channels))
-        # print(emb.shape)
         if self.num_classes is not None:
             assert y.shape == (x.shape[0],)
             emb = emb + self.label_emb(y)
@@ -769,9 +767,7 @@ class UNetModel(nn.Module):
         for module in self.output_blocks:
             h = th.cat([h, hs.pop()], dim=1)
             h = module(h, emb)
-            # print(h.shape)
         h = h.type(x.dtype)
-        # print("existing, ", h.shape)
         return self.out(h)
 
 
