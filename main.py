@@ -452,7 +452,7 @@ def main():
         if sampler is not None:
             sampler.set_epoch(epoch)
         train_one_epoch(model, train_loader, diffusion, optimizer, logger, None, args)
-        if not epoch % 1 and args.local_rank == 0:
+        if not epoch % 1:
             sampled_images, _ = sample_N_images(
                 64,
                 model,
@@ -465,13 +465,14 @@ def main():
                 metadata.num_classes,
                 args,
             )
-            cv2.imwrite(
-                os.path.join(
-                    args.save_dir,
-                    f"{args.arch}_{args.dataset}-{args.diffusion_steps}_steps-{args.sampling_steps}-sampling_steps-class_condn_{args.class_cond}.png",
-                ),
-                np.concatenate(sampled_images, axis=1)[:, :, ::-1],
-            )
+            if args.local_rank == 0:
+                cv2.imwrite(
+                    os.path.join(
+                        args.save_dir,
+                        f"{args.arch}_{args.dataset}-{args.diffusion_steps}_steps-{args.sampling_steps}-sampling_steps-class_condn_{args.class_cond}.png",
+                    ),
+                    np.concatenate(sampled_images, axis=1)[:, :, ::-1],
+                )
         if args.local_rank == 0:
             torch.save(
                 model.state_dict(),
