@@ -272,7 +272,7 @@ def sample_N_images(
                     args.device
                 )
             else:
-                None
+                y = None
             gen_images = diffusion.sample_from_reverse_process(
                 model, xT, sampling_steps, {"y": y}, args.ddim
             )
